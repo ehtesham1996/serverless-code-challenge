@@ -1,5 +1,5 @@
-/* eslint-disable import/no-import-module-exports */
 /* eslint-disable no-template-curly-in-string */
+/* eslint-disable import/no-import-module-exports */
 import type { AWS } from '@serverless/typescript';
 import { esbuild } from './serverless/configs/esbuild.custom';
 import { prune } from './serverless/configs/prune.custom';
@@ -10,7 +10,7 @@ const region: any = "${opt:region, 'us-east-1'}";
 const stage = "${opt:stage, 'dev'}";
 
 export const service: AWS = {
-  service: 'service-name',
+  service: 'serverless-todo-code-challenge',
   frameworkVersion: '3',
   package: {
     individually: true,
@@ -27,20 +27,14 @@ export const service: AWS = {
     'serverless-prune-plugin',
     'serverless-dotenv-plugin',
     'serverless-deployment-bucket',
-    'serverless-analyze-bundle-plugin',
     'serverless-offline'
   ],
   provider: {
     name: 'aws',
-    runtime: 'nodejs14.x',
+    runtime: 'nodejs16.x',
     stage,
     region,
     memorySize: 256,
-    lambdaHashingVersion: '20201221',
-    apiGateway: {
-      shouldStartNameWithService: true,
-      minimumCompressionSize: 1024
-    },
     deploymentBucket: {
       name: '${self:service}-deployments',
       maxPreviousDeploymentArtifacts: 3

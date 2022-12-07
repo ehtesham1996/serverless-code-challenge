@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { BadRequestError, DatabaseError } from '@src/core/errors';
 import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 import { docClient } from './doc-client';

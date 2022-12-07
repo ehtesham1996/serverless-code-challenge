@@ -63,7 +63,6 @@ export class APIResponse implements APIGatewayProxyResult {
     return this;
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-types
   setBody(body: object): APIResponse {
     this.apiResponse.data = JSON.stringify(body);
     return this;

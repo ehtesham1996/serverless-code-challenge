@@ -1,5 +1,3 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable import/no-extraneous-dependencies */
 import { DatabaseError } from '@src/core/errors';
 import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 import { docClient } from './doc-client';
@@ -17,6 +15,7 @@ export async function queryItem<T>(
     do {
       const queryParams = params;
       queryParams.ExclusiveStartKey = ExclusiveStartKey;
+      // eslint-disable-next-line no-await-in-loop
       const response = await docClient().query(queryParams).promise();
       const items: any = response.Items || [];
       results.push(...items);
