@@ -5,11 +5,12 @@
   "scripts": {
     "start:dev": "serverless offline start --verbose",
     "start:debug": "SLS_DEBUG=* node --inspect ./node_modules/.bin/serverless offline -s dev",
+    "setup:dynamo": "serverless dynamodb install",
     "test": "./node_modules/.bin/jest --ci --verbose",
     "test:watch": "ENV=test ./node_modules/.bin/jest --ci --verbose --watch",
     "test:coverage": "./node_modules/.bin/jest --ci --verbose --coverage",
     "lint": "eslint --fix --ignore-path .gitignore '**/*.ts'",
-    "prepare": "husky install"
+    "prepare": "husky install && npm run setup:dynamo"
   },
   "dependencies": {
     "joi": "^17.6.0",
@@ -41,7 +42,8 @@
     "serverless": "^3.25.1",
     "serverless-deployment-bucket": "^1.6.0",
     "serverless-dotenv-plugin": "^4.0.0",
-    "serverless-esbuild": "^1.26.2",
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-esbuild": "^1.33.2",
     "serverless-offline": "^8.8.1",
     "serverless-prune-plugin": "^2.0.1",
     "ts-jest": "^28.0.1",

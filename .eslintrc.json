@@ -8,20 +8,52 @@
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["jest", "@typescript-eslint"],
+  "plugins": [
+    "jest",
+    "@typescript-eslint"
+  ],
   "root": true,
   "globals": {},
   "rules": {
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": [
+      "error"
+    ],
     "default-param-last": "off",
     "jest/no-hooks": "off",
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "semi": ["error", "always"],
-    "quotes" : ["error", "single", { "avoidEscape": true }],
-    "quote-props": ["error", "as-needed"],
-    "import/no-cycle": [2, { "ignoreExternal": true }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
+    "import/no-cycle": [
+      2,
+      {
+        "ignoreExternal": true
+      }
+    ],
     "@typescript-eslint/no-explicit-any": 0,
     "camelcase": "off",
-    "@typescript-eslint/indent": [2, 2],
+    "@typescript-eslint/indent": [
+      2,
+      2
+    ],
     "no-console": "off",
     "no-underscore-dangle": "off",
     "import/no-unresolved": [
@@ -33,7 +65,10 @@
     ],
     "import/prefer-default-export": "off",
     "jest/prefer-expect-assertions": "off",
-    "comma-dangle": ["error", "never"],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
     "import/extensions": "off",
     "no-trailing-spaces": "error",
     "max-len": [
@@ -56,10 +91,19 @@
     "import/resolver": {
       "alias": {
         "map": [
-          ["@src", "./src"],
-          ["@tests", "./tests"]
+          [
+            "@src",
+            "./src"
+          ],
+          [
+            "@tests",
+            "./tests"
+          ]
         ],
-        "extensions": [".ts", ".js"]
+        "extensions": [
+          ".ts",
+          ".js"
+        ]
       }
     }
   }

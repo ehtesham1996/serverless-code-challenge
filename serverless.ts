@@ -1,9 +1,9 @@
 /* eslint-disable no-template-curly-in-string */
 /* eslint-disable import/no-import-module-exports */
 import type { AWS } from '@serverless/typescript';
+import { functions } from './src/functions';
 import { esbuild } from './serverless/configs/esbuild.custom';
-import { prune } from './serverless/configs/prune.custom';
-import { functions } from './serverless/functions';
+import { cors, dynamodb, prune } from './serverless/configs';
 import { resources } from './serverless/resources';
 
 const region: any = "${opt:region, 'us-east-1'}";
@@ -14,16 +14,16 @@ export const service: AWS = {
   frameworkVersion: '3',
   package: {
     individually: true,
-    patterns: [
-      '!**/*.test.ts'
-    ]
+    patterns: ['!**/*.test.ts']
   },
   custom: {
     esbuild,
-    prune
+    prune,
+    dynamodb
   },
   plugins: [
     'serverless-esbuild',
+    'serverless-dynamodb-local',
     'serverless-prune-plugin',
     'serverless-dotenv-plugin',
     'serverless-deployment-bucket',
@@ -35,6 +35,9 @@ export const service: AWS = {
     stage,
     region,
     memorySize: 256,
+    httpApi: {
+      cors
+    },
     deploymentBucket: {
       name: '${self:service}-deployments',
       maxPreviousDeploymentArtifacts: 3

@@ -11,11 +11,14 @@ jspm_packages
 .webpack
 .eslintcache
 
-#Exlcuding env files
+# Exlcuding env files
 .env*
 
-#Exluding jest coverage file
+# Dynamodb directories
+.dynamodb
+
+# Exluding jest coverage file
 /coverage/
 
-#Excluding webpack dist file
+# Excluding webpack dist file
 /dist/
