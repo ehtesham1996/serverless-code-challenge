@@ -13,16 +13,18 @@ import { docClient } from './doc-client';
 export async function softDeleteItem(params: DocumentClient.DeleteItemInput): Promise<void> {
   try {
     const updateParams: DocumentClient.UpdateItemInput = params;
-    updateParams.ConditionExpression = `attribute_exists(${Object.keys(params.Key)[0]}) and deleted <> :deleted`;
+    updateParams.ConditionExpression = `attribute_exists(${
+      Object.keys(params.Key)[0]
+    }) and deleted <> :deleted`;
     updateParams.UpdateExpression = 'set deleted = :deleted';
     updateParams.ExpressionAttributeValues = {
       ':deleted': true
     };
     await docClient().update(params).promise();
-  } catch (error) {
+  } catch (error: any) {
     if (error.code === 'ValidationException' || error.code === 'ConditionalCheckFailedException') {
       throw new BadRequestError('Unable to delete non existent item');
     }
-    throw new DatabaseError(error);
+    throw new DatabaseError();
   }
 }

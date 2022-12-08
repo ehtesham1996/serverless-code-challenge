@@ -1,4 +1,6 @@
-export const DataTable = {
+import type { CloudFormationResource } from 'serverless/aws';
+
+export const DataTable: CloudFormationResource = {
   Type: 'AWS::DynamoDB::Table',
   Properties: {
     // eslint-disable-next-line no-template-curly-in-string

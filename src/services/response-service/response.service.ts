@@ -2,17 +2,17 @@ import { APIGatewayProxyResult } from 'aws-lambda';
 import { CustomResponse } from './types/custom-response.type';
 
 export class APIResponse implements APIGatewayProxyResult {
-  statusCode: number;
+  statusCode = 200;
 
   headers?: { [header: string]: string | number | boolean };
 
   multiValueHeaders?: { [header: string]: (string | number | boolean)[] };
 
-  body: string;
+  body = '';
 
   isBase64Encoded?: boolean;
 
-  private apiResponse: CustomResponse;
+  private apiResponse: CustomResponse = {} as CustomResponse;
 
   success(message = 'OK', data?: any): APIGatewayProxyResult {
     this.setHeaders();
@@ -23,6 +23,12 @@ export class APIResponse implements APIGatewayProxyResult {
       message,
       data
     };
+    return this.build;
+  }
+
+  created(): APIGatewayProxyResult {
+    this.setHeaders();
+    this.statusCode = 201;
     return this.build;
   }
 

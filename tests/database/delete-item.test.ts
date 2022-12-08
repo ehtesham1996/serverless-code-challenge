@@ -55,7 +55,7 @@ describe('database - delete item - helper function', () => {
     };
 
     await expect(async () => deleteItem(params)).rejects.toThrow(
-      'Oops! seems like we\'re having difficulties.Please try again later. ERR(DB-02)'
+      "Oops! seems like we're having difficulties.Please try again later. ERR(DB-02)"
     );
   });
 });

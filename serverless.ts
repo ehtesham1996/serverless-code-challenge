@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 /* eslint-disable import/no-import-module-exports */
-import type { AWS } from '@serverless/typescript';
+import type { Serverless } from 'serverless/aws';
 import { functions } from './src/functions';
 import { esbuild } from './serverless/configs/esbuild.custom';
 import { cors, dynamodb, prune } from './serverless/configs';
@@ -9,7 +9,7 @@ import { resources } from './serverless/resources';
 const region: any = "${opt:region, 'us-east-1'}";
 const stage = "${opt:stage, 'dev'}";
 
-export const service: AWS = {
+export const service: Serverless = {
   service: 'serverless-todo-code-challenge',
   frameworkVersion: '3',
   package: {

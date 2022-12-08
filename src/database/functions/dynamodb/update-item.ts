@@ -7,11 +7,11 @@ export async function updateItem(
 ): Promise<DocumentClient.UpdateItemOutput> {
   try {
     return await docClient().update(params).promise();
-  } catch (error) {
+  } catch (error: any) {
     if (error.code && error.code === 'ConditionalCheckFailedException') {
       throw new NotFoundError('Invalid id specified to be updated');
     }
-    throw new DatabaseError(error);
+    throw new DatabaseError();
   }
 }
 

@@ -12,6 +12,6 @@ export async function getItem<T>(params: DocumentClient.GetItemInput): Promise<T
     if (error instanceof HttpError) {
       throw error;
     }
-    throw new DatabaseError(error);
+    throw new DatabaseError();
   }
 }

@@ -15,12 +15,12 @@ export const HttpJsonBodyParserMiddleware: middy.Middleware<any, any> = (opts = 
     before: async (handler: MiddyHandlerLambda): Promise<any> => {
       const { headers, body } = handler.event;
 
-      const contentTypeHeader = headers?.['Content-Type'] ?? headers?.['content-type'];
+      const contentTypeHeader = headers?.['Content-Type'] || headers?.['content-type'] || '';
 
       if (mimePattern.test(contentTypeHeader)) {
         try {
           const data = handler.event.isBase64Encoded
-            ? Buffer.from(body, 'base64').toString()
+            ? Buffer.from(body as string, 'base64').toString()
             : body;
           handler.event.body = parseBody(data, options.reviver);
         } catch (err) {

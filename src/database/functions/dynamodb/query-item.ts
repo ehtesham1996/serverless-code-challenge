@@ -6,9 +6,9 @@ export async function queryItem<T>(
   params: DocumentClient.QueryInput,
   limit?: number
 ): Promise<{
-    Items: T[];
-    LastEvaluatedKey: DocumentClient.Key;
-  }> {
+  Items: T[];
+  LastEvaluatedKey: DocumentClient.Key;
+}> {
   try {
     let { ExclusiveStartKey } = params;
     const results: T[] = [];
@@ -30,6 +30,6 @@ export async function queryItem<T>(
     };
   } catch (error: any) {
     console.log(error);
-    throw new DatabaseError(error);
+    throw new DatabaseError();
   }
 }

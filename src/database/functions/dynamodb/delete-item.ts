@@ -5,10 +5,10 @@ import { docClient } from './doc-client';
 export async function deleteItem(params: DocumentClient.DeleteItemInput): Promise<void> {
   try {
     await docClient().delete(params).promise();
-  } catch (error) {
+  } catch (error: any) {
     if (error.code === 'ValidationException') {
       throw new BadRequestError('Unable to delete non existent item');
     }
-    throw new DatabaseError(error);
+    throw new DatabaseError();
   }
 }

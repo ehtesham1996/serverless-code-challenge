@@ -3,7 +3,6 @@ import AWSSDK from 'aws-sdk';
 import { softDeleteItem } from '@src/database';
 
 describe('database - soft delete item - helper function', () => {
-
   beforeAll(() => {
     AWS.setSDKInstance(AWSSDK);
   });
@@ -45,7 +44,9 @@ describe('database - soft delete item - helper function', () => {
       }
     };
 
-    await expect(async () => softDeleteItem(params)).rejects.toThrow('Unable to delete non existent item ERR(BR-01)');
+    await expect(async () => softDeleteItem(params)).rejects.toThrow(
+      'Unable to delete non existent item ERR(BR-01)'
+    );
   });
 
   it('error - 500', async () => {
@@ -60,6 +61,8 @@ describe('database - soft delete item - helper function', () => {
       }
     };
 
-    await expect(async () => softDeleteItem(params)).rejects.toThrow('Oops! seems like we\'re having difficulties.Please try again later. ERR(DB-02)');
+    await expect(async () => softDeleteItem(params)).rejects.toThrow(
+      "Oops! seems like we're having difficulties.Please try again later. ERR(DB-02)"
+    );
   });
 });

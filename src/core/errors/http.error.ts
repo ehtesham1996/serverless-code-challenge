@@ -26,9 +26,7 @@ export class BadRequestError extends HttpError {
  *              conflict request when source already exists
  */
 export class HttpAlreadyExistsError extends HttpError {
-  constructor(
-    message = 'The resource you are trying to create already exists'
-  ) {
+  constructor(message = 'The resource you are trying to create already exists') {
     super(`${message} ERR(CR-01)`, 409);
   }
 }
@@ -52,7 +50,6 @@ export class UnproccessibleEntity extends HttpError {
     super(`${message} ERR(UE-01)`, 422);
   }
 }
-
 
 /* @description not found error description class.This defines
  *              not found when record not found

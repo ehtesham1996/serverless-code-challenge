@@ -8,19 +8,12 @@ import { HttpError } from './http.error';
  */
 export class DatabaseConnectionError extends HttpError {
   constructor() {
-    super(
-      "Oops! seems like we're having difficulties.Please try again later. ERR(DB-01)",
-      500
-    );
+    super("Oops! seems like we're having difficulties.Please try again later. ERR(DB-01)", 500);
   }
 }
 
 export class DatabaseError extends HttpError {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  constructor(_msg) {
-    super(
-      "Oops! seems like we're having difficulties.Please try again later. ERR(DB-02)",
-      500
-    );
+  constructor() {
+    super("Oops! seems like we're having difficulties.Please try again later. ERR(DB-02)", 500);
   }
 }

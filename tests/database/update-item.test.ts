@@ -15,15 +15,21 @@ describe('database - update item - helper function', () => {
     AWS.mock('DynamoDB.DocumentClient', 'update', async (params: any) => {
       expect(params).toStrictEqual({
         TableName: 'TableName',
-        Key: { pk: '12345', sk: 'details' }, UpdateExpression: 'set #status = :status', ExpressionAttributeNames: { '#status': 'status' },
-        ExpressionAttributeValues: { ':status': true }, ReturnValues: 'ALL_NEW'
+        Key: { pk: '12345', sk: 'details' },
+        UpdateExpression: 'set #status = :status',
+        ExpressionAttributeNames: { '#status': 'status' },
+        ExpressionAttributeValues: { ':status': true },
+        ReturnValues: 'ALL_NEW'
       });
     });
 
     const params = {
       TableName: 'TableName',
-      Key: { pk: '12345', sk: 'details' }, UpdateExpression: 'set #status = :status', ExpressionAttributeNames: { '#status': 'status' },
-      ExpressionAttributeValues: { ':status': true }, ReturnValues: 'ALL_NEW'
+      Key: { pk: '12345', sk: 'details' },
+      UpdateExpression: 'set #status = :status',
+      ExpressionAttributeNames: { '#status': 'status' },
+      ExpressionAttributeValues: { ':status': true },
+      ReturnValues: 'ALL_NEW'
     };
 
     await updateItem(params);
@@ -43,7 +49,9 @@ describe('database - update item - helper function', () => {
       }
     };
 
-    await expect(async () => updateItem(params)).rejects.toThrow('Invalid id specified to be updated ERR(NF-01)');
+    await expect(async () => updateItem(params)).rejects.toThrow(
+      'Invalid id specified to be updated ERR(NF-01)'
+    );
   });
 
   it('error - 500', async () => {
@@ -53,12 +61,16 @@ describe('database - update item - helper function', () => {
 
     const params = {
       TableName: 'TableName',
-      Key: { pk: '12345', sk: 'details' }, UpdateExpression: 'set #status = :status', ExpressionAttributeNames: { '#status': 'status' },
-      ExpressionAttributeValues: { ':status': true }, ReturnValues: 'ALL_NEW'
+      Key: { pk: '12345', sk: 'details' },
+      UpdateExpression: 'set #status = :status',
+      ExpressionAttributeNames: { '#status': 'status' },
+      ExpressionAttributeValues: { ':status': true },
+      ReturnValues: 'ALL_NEW'
     };
-    await expect(async () => updateItem(params)).rejects.toThrow('Oops! seems like we\'re having difficulties.Please try again later. ERR(DB-02)');
+    await expect(async () => updateItem(params)).rejects.toThrow(
+      "Oops! seems like we're having difficulties.Please try again later. ERR(DB-02)"
+    );
   });
-
 
   it('success - build expression', async () => {
     jest.spyOn(Date.prototype, 'toISOString').mockReturnValue('2020-01-01T00:00:00.000Z');
@@ -79,6 +91,8 @@ describe('database - update item - helper function', () => {
     );
   });
   it('failure - build expression', async () => {
-    expect(() => buildUpdateExpression({ pk: '123456', sk: '123456'}, {})).toThrow('Please specify attributes to be updated ERR(BR-01)');
+    expect(() => buildUpdateExpression({ pk: '123456', sk: '123456' }, {})).toThrow(
+      'Please specify attributes to be updated ERR(BR-01)'
+    );
   });
 });

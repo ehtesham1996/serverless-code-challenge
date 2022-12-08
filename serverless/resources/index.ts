@@ -1,10 +1,8 @@
-import type { AWS } from '@serverless/typescript';
+import type { Serverless } from 'serverless/aws';
 import { DataTable } from './dynamodb';
-import { GatewayResponse } from './gateway-response';
 
-export const resources: AWS['resources'] = {
+export const resources: Serverless['resources'] = {
   Resources: {
-    GatewayResponse,
     DataTable
   }
 };

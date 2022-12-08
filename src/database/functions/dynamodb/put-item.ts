@@ -6,6 +6,6 @@ export async function putItem(params: DocumentClient.PutItemInput): Promise<void
   try {
     await docClient().put(params).promise();
   } catch (error) {
-    throw new DatabaseError(error);
+    throw new DatabaseError();
   }
 }

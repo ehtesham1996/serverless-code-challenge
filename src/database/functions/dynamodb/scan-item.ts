@@ -26,6 +26,6 @@ export async function scanItem<T>(
       LastEvaluatedKey: ExclusiveStartKey as DocumentClient.Key
     };
   } catch (error: any) {
-    throw new DatabaseError(error);
+    throw new DatabaseError();
   }
 }

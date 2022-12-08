@@ -43,7 +43,9 @@ describe('database - get item - helper function', () => {
         id: '1234567890-1'
       }
     };
-    await expect(async () => getItem(params)).rejects.toThrow('Invalid item specified to be fetched. ERR(BR-01)');
+    await expect(async () => getItem(params)).rejects.toThrow(
+      'Invalid item specified to be fetched. ERR(BR-01)'
+    );
   });
 
   it('throw when database is not responding', async () => {
@@ -59,6 +61,8 @@ describe('database - get item - helper function', () => {
       }
     };
 
-    await expect(async () => getItem(params)).rejects.toThrow('Oops! seems like we\'re having difficulties.Please try again later. ERR(DB-02)');
+    await expect(async () => getItem(params)).rejects.toThrow(
+      "Oops! seems like we're having difficulties.Please try again later. ERR(DB-02)"
+    );
   });
 });
