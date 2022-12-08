@@ -1,9 +1,9 @@
-/* eslint-disable no-template-curly-in-string */
 /* eslint-disable import/no-import-module-exports */
 import type { Serverless } from 'serverless/aws';
 import { functions } from './src/functions';
 import { esbuild } from './serverless/configs/esbuild.custom';
 import { cors, dynamodb, prune } from './serverless/configs';
+import { iam } from './serverless/iam';
 import { resources } from './serverless/resources';
 
 const region: any = "${opt:region, 'us-east-1'}";
@@ -47,7 +47,8 @@ export const service: Serverless = {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       REGION: '${self:provider.region}',
       NODE_OPTIONS: '--enable-source-maps'
-    }
+    },
+    iam
   },
   functions,
   resources
