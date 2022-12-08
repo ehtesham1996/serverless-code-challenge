@@ -1,6 +1,11 @@
-# Serverless Typescript Starter
+# Serverless User TODO Code Challenge
 
-A Template to quickly start your serverless projects
+A Simple user todo CRUD in serverless framework done for Serverless Guru Code Challenge
+
+## API DOCS
+
+API Docs are published on the following url:
+[API DOCUMENT SERVERLESS TODO](https://ehtesham1996-docs.stoplight.io/docs/serverless-todo-challenge)
 
 ### Install 
 
@@ -16,10 +21,6 @@ A Template to quickly start your serverless projects
 ### Local development
 
 For local developement please use the command npm run start:dev to start server in development mode.
-
-### Pull request
-
-More details will be added later.
 
 ### Tech
 TypeScript, Nodejs, MongoDB, Serverless Framework, AWS
