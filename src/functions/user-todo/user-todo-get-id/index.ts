@@ -1,4 +1,5 @@
 import type { AwsFunctionHandler } from 'serverless/aws';
+import { cors } from '../../../../serverless/configs';
 import { HTTP } from '../../../core/types/http-methods.enum';
 
 export const userTodoGetById: AwsFunctionHandler = {
@@ -7,7 +8,8 @@ export const userTodoGetById: AwsFunctionHandler = {
     {
       http: {
         method: HTTP.GET,
-        path: '/user-todo/{todoId}'
+        path: '/user-todo/{todoId}',
+        cors
       }
     }
   ]

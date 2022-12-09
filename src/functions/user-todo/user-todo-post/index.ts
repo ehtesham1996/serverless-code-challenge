@@ -1,4 +1,5 @@
 import type { AwsFunctionHandler } from 'serverless/aws';
+import { cors } from '../../../../serverless/configs';
 import { HTTP } from '../../../core/types/http-methods.enum';
 
 export const userTodoPost: AwsFunctionHandler = {
@@ -7,7 +8,8 @@ export const userTodoPost: AwsFunctionHandler = {
     {
       http: {
         method: HTTP.POST,
-        path: '/user-todo'
+        path: '/user-todo',
+        cors
       }
     }
   ]

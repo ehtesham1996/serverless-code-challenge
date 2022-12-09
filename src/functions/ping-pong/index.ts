@@ -1,4 +1,5 @@
 import type { AwsFunctionHandler } from 'serverless/aws';
+import { cors } from '../../../serverless/configs';
 import { HTTP } from '../../core/types/http-methods.enum';
 
 export const pingPong: AwsFunctionHandler = {
@@ -7,7 +8,8 @@ export const pingPong: AwsFunctionHandler = {
     {
       http: {
         method: HTTP.GET,
-        path: '/ping'
+        path: '/ping',
+        cors
       }
     }
   ]
