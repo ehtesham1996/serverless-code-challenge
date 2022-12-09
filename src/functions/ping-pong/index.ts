@@ -5,7 +5,7 @@ export const pingPong: AwsFunctionHandler = {
   handler: `${__dirname.split(process.cwd())[1].substring(1)}/post.handler`,
   events: [
     {
-      httpApi: {
+      http: {
         method: HTTP.GET,
         path: '/ping'
       }

@@ -5,7 +5,7 @@ export const userTodoPut: AwsFunctionHandler = {
   handler: `${__dirname.split(process.cwd())[1].substring(1)}/user-todo-put.handler`,
   events: [
     {
-      httpApi: {
+      http: {
         method: HTTP.PUT,
         path: '/user-todo/{todoId}'
       }
